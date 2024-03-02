@@ -1126,7 +1126,7 @@ body::before {
   z-index: -1;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.6);
 }
 .footer a {
   color: #c20808;
@@ -2953,18 +2953,6 @@ body::before {
 .friends-plugin__item-info__intro {
   font-size: 0.9em;
   color: #999;
-}
-.busuanzi-siteuv__icon,
-.busuanzi-sitepv__icon,
-.busuanzi-siteuv__info,
-.busuanzi-sitepv__info,
-.busuanzi-siteuv__value,
-.busuanzi-sitepv__value {
-  margin: 0 2px;
-}
-.busuanzi > span:nth-child(2)::before {
-  content: '|';
-  margin: 0 10px;
 }
 @media (min-width: 1290px) {
   .header-nav-inner {
