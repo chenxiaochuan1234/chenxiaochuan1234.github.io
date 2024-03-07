@@ -5,10 +5,13 @@
 <meta property="og:site_name" content="SmallBoat&#39; Blog">
 <meta property="og:description" content="Redis基础篇包括Redis简介、Redis安装、修改配置文件、Redis命令、Redis的Java客户端。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2024/03/07/126318_7e02f584dc-4.2.3list.png">
+<meta property="og:image" content="https://cdn.acwing.com/media/article/image/2024/03/07/126318_81ff1000dc-4.2.4set.png">
 <meta property="article:published_time" content="2024-03-04T04:29:00.000Z">
-<meta property="article:modified_time" content="2024-03-04T04:47:21.921Z">
+<meta property="article:modified_time" content="2024-03-07T11:21:59.828Z">
 <meta property="article:author" content="SmallBoat">
-<meta name="twitter:card" content="summary"><title>Redis基础篇 | SmallBoat' Blog</title><link ref="canonical" href="http://smallboatc.github.io/2024/03/04/Redis%E5%9F%BA%E7%A1%80%E7%AF%87/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><script>var Stun = window.Stun || {};
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.acwing.com/media/article/image/2024/03/07/126318_7e02f584dc-4.2.3list.png"><title>Redis基础篇 | SmallBoat' Blog</title><link ref="canonical" href="http://smallboatc.github.io/2024/03/04/Redis%E5%9F%BA%E7%A1%80%E7%AF%87/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -32,7 +35,7 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">SmallBoat's Blog</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><div class="sticky-top" data-popover="置顶文章" data-popover-pos="up"><span class="sticky-top__icon"><i class="fas fa-thumbtack"></i></span></div><h1 class="post-title">Redis基础篇</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-03-04</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-03-04</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">3k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">23分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p><a name="AAv2g"></a></p>
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">SmallBoat's Blog</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><div class="sticky-top" data-popover="置顶文章" data-popover-pos="up"><span class="sticky-top__icon"><i class="fas fa-thumbtack"></i></span></div><h1 class="post-title">Redis基础篇</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-03-04</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-03-07</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">3.8k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">29分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p><a name="AAv2g"></a></p>
 
         <h2 id="1-redis简介"   >
           <a href="#1-redis简介" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#1-redis简介"></a> 1. Redis简介</h2>
@@ -157,11 +160,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.1.1"></he
 </ul>
 <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">需要主机上有C语言的编译环境，即gcc 等编译工具链</span></span><br><span class="line">make</span><br></pre></td></tr></table></div></figure>
 <ul>
-<li>安装
-<ul>
 <li>默认安装</li>
-</ul>
-</li>
 </ul>
 <figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">默认地，相关程序会被安装到 /usr/local/bin 目录下,例如 /usr/local/bin/redis-server</span></span><br><span class="line">make install</span><br></pre></td></tr></table></div></figure>
 <ul>
@@ -270,8 +269,107 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.1.1"></he
         <h3 id="42-各个数据类型命令"   >
           <a href="#42-各个数据类型命令" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#42-各个数据类型命令"></a> 4.2 各个数据类型命令</h3>
       
-<p>参考菜鸟教程：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-tutorial.html" >Redis教程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br />
-<a name="FadCZ"></a></p>
+<p><a name="IweAd"></a></p>
+
+        <h4 id="421-string"   >
+          <a href="#421-string" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#421-string"></a> 4.2.1 String</h4>
+      
+<p><strong>String的常见命令：</strong></p>
+<ul>
+<li><code>SET</code>：添加或者修改已经存在的一个String类型的键值对</li>
+<li><code>GET</code>：根据key获取String类型的value</li>
+<li><code>MSET</code>：批量添加多个String类型的键值对</li>
+<li><code>MGET</code>：根据多个key获取多个String类型的value</li>
+<li><code>INCR</code>：让一个整型的key自增1</li>
+<li><code>INCRBY</code>:让一个整型的key自增并指定步长，例如：incrby num 2 让num值自增2</li>
+<li><code>INCRBYFLOAT</code>：让一个浮点类型的数字自增并指定步长</li>
+<li><code>SETNX</code>：添加一个String类型的键值对，前提是这个key不存在，否则不执行</li>
+<li><code>SETEX</code>：添加一个String类型的键值对，并且指定有效期</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ul>
+<li>以上命令除了<code>INCRBYFLOAT</code>都是常用命令</li>
+<li><code>SET</code>和<code>GET</code>：如果key不存在则是新增，如果存在则是修改</li>
+</ul>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set name Rose  //原来不存在</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; get name </span><br><span class="line">&quot;Rose&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; set name Jack //原来存在，就是修改</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">&quot;Jack&quot;</span><br></pre></td></tr></table></div></figure>
+<p><a name="TwBwp"></a></p>
+
+        <h4 id="422-hash"   >
+          <a href="#422-hash" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#422-hash"></a> 4.2.2 Hash</h4>
+      
+<p><strong>Hash类型的常见命令:</strong></p>
+<ul>
+<li><code>HSET key field value</code>：添加或者修改hash类型key的field的值</li>
+<li><code>HGET key field</code>：获取一个hash类型key的field的值</li>
+<li><code>HMSET</code>：批量添加多个hash类型key的field的值</li>
+<li><code>HMGET</code>：批量获取多个hash类型key的field的值</li>
+<li><code>HGETALL</code>：获取一个hash类型的key中的所有的field和value</li>
+<li><code>HKEYS</code>：获取一个hash类型的key中的所有的field</li>
+<li><code>HINCRBY</code>:让一个hash类型key的字段值自增并指定步长</li>
+<li><code>HSETNX</code>：添加一个hash类型的key的field值，前提是这个field不存在，否则不执行<br />
+<a name="nXnw9"></a></li>
+</ul>
+
+        <h4 id="423-list"   >
+          <a href="#423-list" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#423-list"></a> 4.2.3 List</h4>
+      
+<p><strong>List的常见命令：</strong></p>
+<ul>
+<li><code>LPUSH key element ... </code>：向列表左侧插入一个或多个元素</li>
+<li><code>LPOP key</code>：移除并返回列表左侧的第一个元素，没有则返回nil</li>
+<li><code>RPUSH key element ...</code>：向列表右侧插入一个或多个元素</li>
+<li><code>RPOP key</code>：移除并返回列表右侧的第一个元素</li>
+<li><code>LRANGE key star end</code>：返回一段角标范围内的所有元素</li>
+<li><code>BLPOP</code>和<code>BRPOP</code>：与<code>LPOP</code>和<code>RPOP</code>类似，只不过在没有元素时等待指定时间，而不是直接返回nil</li>
+</ul>
+<p>
+        <img   class="lazyload lazyload-block"
+          src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="https://cdn.acwing.com/media/article/image/2024/03/07/126318_7e02f584dc-4.2.3list.png"  alt="image.png" />
+      <br />
+<a name="WMrHG"></a></p>
+
+        <h4 id="424-set"   >
+          <a href="#424-set" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#424-set"></a> 4.2.4 Set</h4>
+      
+<p><strong>Set类型的常见命令：</strong></p>
+<ul>
+<li><code>SADD key member ...</code>：向set中添加一个或多个元素</li>
+<li><code>SREM key member ...</code>: 移除set中的指定元素</li>
+<li><code>SCARD key</code>： 返回set中元素的个数</li>
+<li><code>SISMEMBER key member</code>：判断一个元素是否存在于set中</li>
+<li><code>SMEMBERS</code>：获取set中的所有元素</li>
+<li><code>SINTER key1 key2 ...</code>：求key1与key2的交集</li>
+<li><code>SDIFF key1 key2 ...</code>：求key1与key2的差集</li>
+<li><code>SUNION key1 key2 ...</code>：求key1和key2的并集</li>
+</ul>
+<p>
+        <img   class="lazyload lazyload-block"
+          src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="https://cdn.acwing.com/media/article/image/2024/03/07/126318_81ff1000dc-4.2.4set.png"  alt="image.png" />
+      <br />
+<a name="m4FJA"></a></p>
+
+        <h4 id="425-sortedset"   >
+          <a href="#425-sortedset" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#425-sortedset"></a> 4.2.5 SortedSet</h4>
+      
+<p><strong>SortedSet的常见命令：</strong></p>
+<ul>
+<li><code>ZADD key score member</code>：添加一个或多个元素到SortedSet ，如果已经存在则更新其score值</li>
+<li><code>ZREM key member</code>：删除SortedSet中的一个指定元素</li>
+<li><code>ZSCORE key member</code> : 获取SortedSet中的指定元素的score值</li>
+<li><code>ZRANK key member</code>：获取SortedSet 中的指定元素的排名</li>
+<li><code>ZCARD key</code>：获取SortedSet中的元素个数</li>
+<li><code>ZCOUNT key min max</code>：统计score值在给定范围内的所有元素的个数</li>
+<li><code>ZINCRBY key increment member</code>：让SortedSet中的指定元素自增，步长为指定的increment值</li>
+<li><code>ZRANGE key min max</code>：按照score排序后，获取指定排名范围内的元素</li>
+<li><code>ZRANGEBYSCORE key min max</code>：按照score排序后，获取指定score范围内的元素</li>
+<li><code>ZDIFF.ZINTER.ZUNION</code>：求差集、交集、并集</li>
+</ul>
+<p><strong>注意：</strong><br />所有的排名默认都是升序，如果要降序则在命令的<code>Z</code>后面添加<code>REV</code>即可，例如：</p>
+<ul>
+<li><strong>升序</strong>获取SortedSet中的指定元素的排名：<code>ZRANK key member</code></li>
+<li><strong>降序</strong>获取SortedSet中的指定元素的排名：<code>ZREVRANK key memeber</code><br />
+<a name="FadCZ"></a></li>
+</ul>
 
         <h2 id="5-redis的java客户端"   >
           <a href="#5-redis的java客户端" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#5-redis的java客户端"></a> 5. Redis的Java客户端</h2>
@@ -431,7 +529,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.1.1"></he
            3. 修改配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-redis%E5%91%BD%E4%BB%A4"><span class="toc-text">
            4. Redis命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">
            4.1 通用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E5%90%84%E4%B8%AA%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%91%BD%E4%BB%A4"><span class="toc-text">
-           4.2 各个数据类型命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-redis%E7%9A%84java%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">
+           4.2 各个数据类型命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#421-string"><span class="toc-text">
+           4.2.1 String</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#422-hash"><span class="toc-text">
+           4.2.2 Hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#423-list"><span class="toc-text">
+           4.2.3 List</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#424-set"><span class="toc-text">
+           4.2.4 Set</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#425-sortedset"><span class="toc-text">
+           4.2.5 SortedSet</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-redis%E7%9A%84java%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">
            5. Redis的Java客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-%E7%9B%AE%E5%89%8D%E4%B8%BB%E6%B5%81%E7%9A%84redis%E7%9A%84java%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">
            5.1 目前主流的Redis的Java客户端：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-jedis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">
            5.2 Jedis快速入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#53-springdataredis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">
