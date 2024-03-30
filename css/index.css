@@ -3085,12 +3085,12 @@ html.nightmode {
   content: '|';
   margin: 0 10px;
 }
-@media (min-width: 1290px) {
+@media (min-width: 1232px) {
   .header-nav-inner {
-    width: 1290px;
+    width: 1232px;
   }
   .main-inner {
-    width: 1290px;
+    width: 1232px;
   }
 }
 @media (min-width: 991.98px) {
