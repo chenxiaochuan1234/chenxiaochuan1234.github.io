@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.acwing.com/media/article/image/2024/06/11/126318_40cef19b27-1.png">
 <meta property="article:published_time" content="2024-05-20T03:26:00.000Z">
-<meta property="article:modified_time" content="2024-06-11T10:44:05.347Z">
+<meta property="article:modified_time" content="2024-06-11T10:52:58.159Z">
 <meta property="article:author" content="SmallBoat">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.acwing.com/media/article/image/2024/06/11/126318_40cef19b27-1.png"><title>反射注解与动态代理 | SmallBoat's Blog</title><link ref="canonical" href="http://smallboatc.github.io/2024/05/20/%E5%8F%8D%E5%B0%84%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><script>var Stun = window.Stun || {};
@@ -59,18 +59,18 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.1.1"></he
 </ul>
 <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Class</span> <span class="variable">alunbarClass</span> <span class="operator">=</span> TargetObject.class;</span><br></pre></td></tr></table></div></figure>
 <ul>
-<li><strong>通过</strong><code>**Class.forName()**</code><strong>传入类的全路径：</strong></li>
+<li><strong>通过<code>Class.forName()</code>传入类的全路径：</strong></li>
 </ul>
 <blockquote>
 <p>我们一般是不知道具体类的，基本都是通过遍历包下面的类来获取 Class 对象，通过此方式获取 Class 对象不会进行初始化</p>
 </blockquote>
 <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Class</span> <span class="variable">alunbarClass1</span> <span class="operator">=</span> Class.forName(<span class="string">&quot;cn.smallboat.TargetObject&quot;</span>);</span><br></pre></td></tr></table></div></figure>
 <ul>
-<li><strong>通过对象实例</strong><code>**instance.getClass()**</code><strong>获取：</strong></li>
+<li><strong>通过对象实例<code>instance.getClass()</code>获取：</strong></li>
 </ul>
 <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TargetObject</span> <span class="variable">o</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TargetObject</span>();</span><br><span class="line"><span class="type">Class</span> <span class="variable">alunbarClass2</span> <span class="operator">=</span> o.getClass();</span><br></pre></td></tr></table></div></figure>
 <ul>
-<li><strong>通过类加载器</strong><code>**xxxClassLoader.loadClass()**</code><strong>传入类路径获取：</strong></li>
+<li><strong>通过类加载器<code>xxxClassLoader.loadClass()</code>传入类路径获取：</strong></li>
 </ul>
 <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassLoader.getSystemClassLoader().loadClass(<span class="string">&quot;cn.smallboat.TargetObject&quot;</span>);</span><br></pre></td></tr></table></div></figure>
 <blockquote>
@@ -101,12 +101,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.1.1"></he
       
 <p>Java注解（Annotation），也叫<code>元数据</code>。一种代码级别的说明。它是<code>JDK1.5</code>及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在<code>包、类、字段、方法、局部变量、方法参数</code>等的前面，用来对这些元素进行说明，注释。</p>
 <blockquote>
-<p>**元数据：**元数据是一个非常广泛的概念，元数据的定义也非常简单，只要是描述数据的数据都是元数据。举个例子🌰：如果有一个数字<code>20</code>，我们并不能知道<code>20</code>是什么，但是我们对其加以描述，例如<code>20天</code>、<code>20kg重量</code>，那么<code>天数</code>、<code>重量</code>这类信息就是描述20这个数据的元数据。</p>
+<p><strong>元数据：</strong> 元数据是一个非常广泛的概念，元数据的定义也非常简单，只要是描述数据的数据都是元数据。举个例子🌰：如果有一个数字<code>20</code>，我们并不能知道<code>20</code>是什么，但是我们对其加以描述，例如<code>20天</code>、<code>20kg重量</code>，那么<code>天数</code>、<code>重量</code>这类信息就是描述20这个数据的元数据。</p>
 </blockquote>
 <p>注解是以<code>@注解名</code>在代码中存在的，根据注解参数的个数，我们可以将注解分为：<code>标记注解、单值注解、完整注解</code>三类。它们都不会直接影响到程序的语义，只是作为注解（标识）存在，<strong>我们可以通过反射机制编程实现对这些元数据（用来描述数据的数据）的访问</strong>。</p>
 <blockquote>
-<p>**注意：**注解本身是没有任何作用的，比如<code>@RequestMapping</code>，在<code>controller</code>层<code>@RequestMapping</code>基本上可以说是必见的，我们都知道他的作用是请求映射，通过他来设置请求的url地址，举例：将<code>@RequestMapping(&quot;config&quot;)</code>写在方法上，然后我们就可以通过<code>url</code>地址访问到这个方法了，但是记住这并不是<code>@RequestMapping</code>注解的功能，<code>SpringMVC</code>会通过反射将注解当中设置的属性值<code>config</code>拿到，然后将<code>url</code>和你声明注解的方法进行绑定。<br />
-**所以：**注解只是起标记作用，注解真正的功能都是由框架通过反射来实现的。换句话说，<strong>注解离开了反射啥也不是！</strong></p>
+<p><strong>注意：</strong> 注解本身是没有任何作用的，比如<code>@RequestMapping</code>，在<code>controller</code>层<code>@RequestMapping</code>基本上可以说是必见的，我们都知道他的作用是请求映射，通过他来设置请求的url地址，举例：将<code>@RequestMapping(&quot;config&quot;)</code>写在方法上，然后我们就可以通过<code>url</code>地址访问到这个方法了，但是记住这并不是<code>@RequestMapping</code>注解的功能，<code>SpringMVC</code>会通过反射将注解当中设置的属性值<code>config</code>拿到，然后将<code>url</code>和你声明注解的方法进行绑定。<br />
+<strong>所以：</strong> 注解只是起标记作用，注解真正的功能都是由框架通过反射来实现的。换句话说，<strong>注解离开了反射啥也不是！</strong></p>
 </blockquote>
 <p><a name="aMtr0"></a></p>
 
@@ -150,11 +150,11 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.1.1"></he
       
 <p>预定义注解都是<code>java.lang</code>包下的，也就是Java提供的基础注解，直接使用，无需导包。<br />预定义注解有：</p>
 <ul>
-<li><code>**@Deprecated**</code>：该注解可作用于方法、属性、类，表示已过时，不建议使用，但仍可以使用。</li>
-<li><code>**@Override**</code>：该注解的作用是对覆盖超类中的方法进行标记，如果被标记的方法未被实际覆盖，则编译器会警告。</li>
-<li><code>**@SuppressWarnings**</code>：作用是消除编译器的警告，满足程序员的洁癖。</li>
-<li><code>**@SafeVarargs**</code>：在声明具有模糊类型（比如：泛型）的可变参数的构造函数或方法时，Java编译器会报<code>unchecked</code>警告。鉴于这些情况，如果程序员断定声明的构造函数和方法的主体不会对其<code>varargs</code>参数执行潜在的不安全的操作，可使用<code>@SafeVarargs</code>进行标记。但是只能作用于构造函数和<code>static</code>或<code>final</code>修饰的可变长参数方法上。</li>
-<li><code>**@FunctionalInterface**</code>：该注解只能作用域函数接口，标记该接口是一个函数接口，一旦不满足就会报错。<br />
+<li><strong><code>@Deprecated</code></strong> ：该注解可作用于方法、属性、类，表示已过时，不建议使用，但仍可以使用。</li>
+<li><strong><code>@Override</code></strong>：该注解的作用是对覆盖超类中的方法进行标记，如果被标记的方法未被实际覆盖，则编译器会警告。</li>
+<li><strong><code>@SuppressWarnings</code></strong>：作用是消除编译器的警告，满足程序员的洁癖。</li>
+<li><strong><code>@SafeVarargs</code></strong>：在声明具有模糊类型（比如：泛型）的可变参数的构造函数或方法时，Java编译器会报<code>unchecked</code>警告。鉴于这些情况，如果程序员断定声明的构造函数和方法的主体不会对其<code>varargs</code>参数执行潜在的不安全的操作，可使用<code>@SafeVarargs</code>进行标记。但是只能作用于构造函数和<code>static</code>或<code>final</code>修饰的可变长参数方法上。</li>
+<li><strong><code>@FunctionalInterface</code></strong>：该注解只能作用域函数接口，标记该接口是一个函数接口，一旦不满足就会报错。<br />
 <a name="O6DzX"></a></li>
 </ul>
 
