@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://cdn.acwing.com/media/article/image/2024/03/02/126318_858eefcdd8-%E8%AE%A1%E6%95%B0%E7%B1%BBDp.png">
 <meta property="og:image" content="https://cdn.acwing.com/media/article/image/2024/03/02/126318_d419c420d8-5.5%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp.png">
 <meta property="article:published_time" content="2023-06-15T10:14:00.000Z">
-<meta property="article:modified_time" content="2024-06-11T05:25:18.699Z">
+<meta property="article:modified_time" content="2024-06-11T05:30:49.856Z">
 <meta property="article:author" content="SmallBoat">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.acwing.com/media/article/image/2024/03/02/126318_5949ec9ed8-Trie%E6%A0%91.png"><title>算法基础笔记 | SmallBoat's Blog</title><link ref="canonical" href="http://smallboatc.github.io/2023/06/15/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><script>var Stun = window.Stun || {};
@@ -415,7 +415,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.1.1"></he
       
 <ul>
 <li>单调队列与单调栈比较类似，用一个队列动态维护一组有序序列。每次先判断队头是否需要出栈，然后从队尾开始向前检查队尾元素与当前枚举元素的关系，如果满足<code>check(a[i])</code>，则让队尾元素弹出，直到队尾元素不满足条件。最后再将当前枚举元素加入队列。值得注意的是，队列<code>q[]</code>存储的是数组中元素的下标。</li>
-<li>该算法常用的场景为**求解滑动窗口中的最大值或最小值、单调队列优化 <strong><code>dp</code></strong>。</li>
+<li>该算法常用的场景为求解滑动窗口中的最大值或最小值、单调队列优化 <strong><code>dp</code></strong>。</li>
 <li><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/description/" >Leetcode一题秒懂单调队列！</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>（利用Deque实现单调队列）<br />
 <a name="dVo8o"></a></li>
 </ul>
@@ -1163,15 +1163,12 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 <ul>
 <li><strong>公式2：</strong> 由于此时<code>i % primes[j] != 0</code>，说明<code>primes[j]</code>不是<code>i</code>的质因子，则在计算<code>phi[i * primes[j]]</code>时，需要乘<code>(1 - 1 / primes[j])</code>这一项，化简即可。</li>
 </ul>
-<p><span class='katex-error' title='ParseError: KaTeX parse error: No such environment: align at position 8: 
-\begin{̲a̲l̲i̲g̲n̲}̲
-  &amp;\varphi(i \…'>
-\begin{align}
+<p><span class='katex-error' title='ParseError: KaTeX parse error: No such environment: align at position 8: {\begin{̲a̲l̲i̲g̲n̲}̲
+  &amp;\varphi(i \…'>{\begin{align}
   &amp;\varphi(i \times\: \text{primes}[j]) = i \times\: \text{primes}[j] \times \left(1 - \frac{1}{p_1}\right) \times \left(1 - \frac{1}{p_2}\right) \times \cdots \times \left(1 - \frac{1}{p_k}\right) \times (1 - \frac{1}{\text{primes}[j]}) \\
   &amp;= \text{primes}[j] \times (1 -\frac{1}{\text{primes}[j]}) \times \varphi(i) \\
   &amp;= (\text{primes}[j] - 1) \times \varphi(i)
-\end{align}
-</span><br />
+\end{align}}</span><br />
 <a name="BEGYT"></a></p>
 
         <h3 id="410-快速幂快速幂"   >
@@ -1209,9 +1206,9 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 <ul>
 <li><strong>乘法逆元定义</strong>：若整数<code>b, m</code>互质，并且对于任意的整数<code>a</code>，如果满足<code>b|a</code>，则存在一个整数<code>x</code>，使得<code>a/b ≡ a * x (mod m)</code>，则称<code>x</code>为<code>b</code>的模<code>m</code>乘法逆元，记作<code>b⁻¹ (mod m)</code>。<code>b</code>存在乘法逆元的充分必要条件是<code>b</code>与模数<code>m</code>互质。</li>
 </ul>
-<p><span class='katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 8: 
+<p><span class='katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 9: {
 \begin{̲a̲l̲i̲g̲n̲*̲}̲
-  &amp;\frac{a}{b}…'>
+  &amp;\frac{a}{b}…'>{
 \begin{align*}
   &amp;\frac{a}{b} = a \cdot x \pmod{m} \\
   &amp;b \cdot x \equiv 1 \pmod{m} \\
@@ -1220,7 +1217,7 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
   &amp;\text{又} \because b^{m-1} = b \cdot b^{m-2}\quad (m \geq 2) \\
   &amp; \therefore x \equiv b^{m-2}\quad (\text{mod } m)
 \end{align*}
-</span></p>
+}</span></p>
 <ul>
 <li>当<code>b</code>为<code>m</code>的倍数时，显然，<code>b % m = 0</code>，不存在逆元；</li>
 <li>当<code>b</code>不是<code>m</code>的倍数时，<code>b</code>的逆元为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>b</mi><mrow><mi>m</mi><mo>−</mo><mn>2</mn></mrow></msup><mi mathvariant="normal">%</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">b^{m - 2} \% m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8696679999999999em;vertical-align:-0.05556em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span><span class="mbin mtight">−</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mord">%</span><span class="mord mathnormal">m</span></span></span></span>。<br />
